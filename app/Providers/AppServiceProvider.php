@@ -1,30 +1,25 @@
 <?php
 
 namespace App\Providers;
+use Illuminate\Support\Facades\File;
 
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
-    /**
-     * Register any application services.
-     */
-    public function register(): void
-    {
-        //
-    }
-
-    /**
-     * Bootstrap any application services.
-     */
-    public function boot(): void
-    {
-        if (app()->environment('production')) {
-            config([
-                'view.compiled' => realpath('/tmp') . '/storage/framework/views',
-                'cache.stores.file.path' => realpath('/tmp') . '/storage/framework/cache',
-                'session.files' => realpath('/tmp') . '/storage/framework/sessions',
-            ]);
+    public function boot()
+{
+    if (app()->environment('production')) {
+        $viewPath = '/tmp/storage/framework/views';
+        if (!File::exists($viewPath)) {
+            File::makeDirectory($viewPath, 0755, true);
         }
+
+        config([
+            'view.compiled' => $viewPath,
+            'cache.stores.file.path' => '/tmp/storage/framework/cache',
+            'session.files' => '/tmp/storage/framework/sessions',
+        ]);
     }
+}
 }
