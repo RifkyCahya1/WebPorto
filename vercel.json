@@ -14,7 +14,7 @@
     "env": {
         "APP_ENV": "production",
         "APP_DEBUG": "false",
-        "APP_URL": "https://portofolio-rifkycahya.vercel.app/",
+        "APP_URL": "https://portofolio-kappa-plum.vercel.app/",
         "APP_KEY": "base64:MeC7KCP97285J+c+RfQLKEmMCJYMOFTKqF6ki5jsuhc=",
         "APP_CONFIG_CACHE": "/tmp/config.php",
         "APP_EVENTS_CACHE": "/tmp/events.php",
