@@ -19,6 +19,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        if (app()->environment('production')) {
+            config([
+                'view.compiled' => realpath('/tmp') . '/storage/framework/views',
+                'cache.stores.file.path' => realpath('/tmp') . '/storage/framework/cache',
+                'session.files' => realpath('/tmp') . '/storage/framework/sessions',
+            ]);
+        }
     }
 }
